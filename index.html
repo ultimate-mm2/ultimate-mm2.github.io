@@ -1,191 +1,352 @@
+
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultimate MM2 Tweak 2026</title>
+
   <style>
-    :root {
-      --purple: #9820b4;
-      --purple-light: #b51ad5;
-      --bg: #080808;
-      --panel: #171717;
-      --text: #f7f4f8;
-      --muted: #c8c2ce;
-    }
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --purple: #a020c0;
+      --bright: #d946ef;
+      --bg: #09090c;
+      --panel: #151519;
+      --border: #29252f;
+      --muted: #aaa5b5;
+    }
+
+    body {
       min-height: 100vh;
-      font-family: Inter, "Segoe UI", Arial, sans-serif;
-      color: var(--text);
+      color: #f8f7fb;
       background:
-        radial-gradient(ellipse at 5% 8%, rgba(229, 204, 230, .92) 0, rgba(147, 130, 148, .72) 23%, rgba(44, 39, 45, .32) 43%, transparent 58%),
-        #080808;
+        radial-gradient(ellipse at 15% 0%, #56344f 0%, transparent 43%),
+        radial-gradient(ellipse at 100% 30%, #21122a 0%, transparent 35%),
+        var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
     }
-    main {
-      width: min(100% - 32px, 620px);
-      margin: 0 auto;
-      padding: 32px 0 48px;
+
+    .hero {
       text-align: center;
+      padding: 42px 20px 38px;
+      border-bottom: 1px solid #ffffff12;
     }
+
     .logo {
-      width: 119px;
-      height: 119px;
-      border-radius: 22px;
-      margin: 0 auto 5px;
-      background: var(--purple);
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 12px;
+      border-radius: 27px;
+      background: linear-gradient(145deg, #b523cf, #8316a4);
       display: grid;
       place-items: center;
-      box-shadow: 0 12px 38px rgba(0,0,0,.25);
+      box-shadow: 0 12px 40px #a020c033;
     }
-    .logo svg { width: 78px; height: 78px; }
-    .tag {
+
+    .logo svg {
+      width: 65px;
+      height: 65px;
+    }
+
+    .brand {
       display: inline-block;
-      margin: 0 0 22px;
-      padding: 7px 15px;
+      padding: 8px 17px;
+      margin-bottom: 26px;
+      border-radius: 7px;
       background: var(--purple);
-      color: #08040a;
       font-size: 13px;
       font-weight: 900;
-      border-radius: 5px;
+      letter-spacing: 2px;
     }
+
     h1 {
-      margin: 0 0 24px;
-      font-size: clamp(27px, 4vw, 38px);
-      line-height: 1.12;
-      font-weight: 900;
-      letter-spacing: -.7px;
-      text-shadow: 0 2px 0 #777;
+      font-size: clamp(30px, 4vw, 46px);
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
     }
+
     .subtitle {
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1.55;
-      margin: 0 auto 36px;
+      color: #d0c9d8;
+      line-height: 1.8;
+      font-size: 18px;
     }
-    .panel {
-      text-align: left;
-      background: rgba(24,24,24,.96);
-      border: 1px solid #252525;
-      border-radius: 16px;
-      padding: 38px 37px 28px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.24);
+
+    .subtitle strong {
+      color: #fff;
     }
-    h2 {
-      color: var(--purple-light);
+
+    .content {
+      width: min(1120px, calc(100% - 36px));
+      margin: 34px auto 70px;
+    }
+
+    .section-title {
       text-align: center;
-      font-size: 22px;
-      margin: 0 0 25px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
     }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #19191e, #121216);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      min-width: 0;
+      box-shadow: 0 18px 60px #0003;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h2 {
+      text-align: center;
+      color: var(--bright);
+      font-size: 23px;
+      margin: 5px 0 28px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 22px;
+    }
+
     .step {
       display: flex;
       align-items: center;
-      gap: 17px;
-      margin: 17px 0 21px;
-      font-size: 16px;
-      line-height: 1.4;
+      gap: 15px;
+      line-height: 1.55;
+      color: #e8e5ed;
     }
+
     .number {
-      flex: 0 0 33px;
-      height: 33px;
+      width: 39px;
+      height: 39px;
+      flex: 0 0 39px;
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: #09040b;
       background: var(--purple);
-      font-weight: 900;
       font-size: 17px;
+      font-weight: 800;
     }
-    .notice {
-      margin: 24px 0 18px;
-      padding: 16px 17px;
-      background: rgba(133, 91, 19, .23);
-      border-left: 5px solid #ffad00;
-      border-radius: 5px;
-      color: #ffb52e;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    .token {
-      border: 1px solid #383838;
-      background: #030303;
-      color: var(--purple-light);
-      border-radius: 10px;
-      min-height: 65px;
-      padding: 16px;
+
+    .token-box {
+      margin-top: 25px;
+      padding: 13px;
+      background: #0b0b0e;
+      border: 1px solid #34303b;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      font: 14px/1.5 Consolas, "Courier New", monospace;
+    }
+
+    .token {
+      min-width: 0;
       overflow-wrap: anywhere;
+      color: #d946ef;
+      font-size: 12px;
+      letter-spacing: .5px;
     }
-    .copy {
-      flex: 0 0 auto;
+
+    button {
       border: 0;
-      border-radius: 6px;
-      background: var(--purple);
+      flex-shrink: 0;
+      border-radius: 8px;
+      padding: 12px 15px;
       color: white;
-      font-weight: 800;
-      padding: 9px 12px;
+      background: var(--purple);
+      font-weight: 700;
       cursor: pointer;
+      transition: background .2s, transform .2s;
     }
-    .copy:hover { background: #b52bd0; }
-    .status {
-      min-height: 20px;
-      margin: 12px 0 0;
+
+    button:hover {
+      background: #bd32d8;
+      transform: translateY(-1px);
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .mobile-label {
+      align-self: center;
+      margin-top: auto;
+      padding-top: 24px;
+      color: #8c8497;
+      font-size: 12px;
       text-align: center;
-      color: #c8c2ce;
-      font-size: 13px;
     }
-    @media (max-width: 520px) {
-      main { padding-top: 22px; }
-      .logo { width: 96px; height: 96px; }
-      .panel { padding: 28px 20px 22px; }
-      .subtitle { font-size: 16px; }
-      .step { gap: 12px; font-size: 15px; }
-      .token { align-items: flex-start; flex-direction: column; }
+
+    footer {
+      text-align: center;
+      color: #77717e;
+      padding: 25px 16px;
+      border-top: 1px solid #ffffff10;
+      font-size: 12px;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 30px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 23px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .token-box {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .token-box button {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <div class="logo" aria-label="Logo">
-      <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
-        <polygon points="50,4 88,25 88,70 50,93 12,71 12,26" fill="#fff"/>
-        <polygon points="50,18 75,32 75,64 50,79 25,65 25,33" fill="#9820b4"/>
-        <rect x="43" y="35" width="14" height="29" rx="1" fill="#ffd33d"/>
+  <header class="hero">
+    <div class="logo" aria-label="Ultimate logo">
+      <svg viewBox="0 0 100 100" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 8 L86 29 V71 L50 92 L14 71 V29 Z"
+              stroke="white" stroke-width="11"/>
+        <rect x="43" y="34" width="14" height="32"
+              rx="2" fill="#facc15"/>
       </svg>
     </div>
-    <div class="tag">PRO TWEAK</div>
+
+    <div class="brand">PRO TWEAK</div>
+
     <h1>Ultimate MM2 Tweak 2026</h1>
-    <p class="subtitle">Free haking software.<br>Activate your Pro-Status now.</p>
 
-    <section class="panel">
-      <h2>Activation Link Ready</h2>
-      <div class="step"><span class="number">1</span><span>Open <strong>PowerShell</strong> from your Start menu.</span></div>
-      <div class="step"><span class="number">2</span><span>Click the box below to <strong>copy</strong> your demo token.</span></div>
-      <div class="step"><span class="number">3</span><span>Use this demo token only in a trusted app. It is not a system command.</span></div>
+    <p class="subtitle">
+      Free hacking software.<br>
+      <strong>Activate your Pro-Status now.</strong>
+    </p>
+  </header>
 
-      <div class="token">
-        <span id="token">DEMO-TOKEN-REPLACE-ME</span>
-        <button class="copy" id="copyButton" type="button">Copy token</button>
-      </div>
-      <p class="status" id="status" aria-live="polite"></p>
-    </section>
+  <main class="content">
+    <p class="section-title">Activation center</p>
+
+    <div class="cards">
+      <section class="card">
+        <h2>Activation Link Ready</h2>
+
+        <div class="steps">
+          <div class="step">
+            <span class="number">1</span>
+            <span>Open <strong>PowerShell</strong> from your Start menu.</span>
+          </div>
+
+          <div class="step">
+            <span class="number">2</span>
+            <span>Click the box below to <strong>copy your demo token.</strong></span>
+          </div>
+
+          <div class="step">
+            <span class="number">3</span>
+            <span>Use the demo token only in a trusted application.</span>
+          </div>
+        </div>
+
+        <div class="token-box">
+          <code class="token">DEMO-TOKEN-REPLACE-ME</code>
+          <button class="copy">Copy token</button>
+        </div>
+
+        <p class="note">
+          Demo interface. This token is a placeholder and does not
+          activate software or run commands.
+        </p>
+
+        <div class="mobile-label">DESKTOP VERSION</div>
+      </section>
+
+      <section class="card">
+        <h2>Activation Link Ready</h2>
+
+        <div class="steps">
+          <div class="step">
+            <span class="number">1</span>
+            <span>Open your preferred terminal.</span>
+          </div>
+
+          <div class="step">
+            <span class="number">2</span>
+            <span>Click below to <strong>copy your demo token.</strong></span>
+          </div>
+
+          <div class="step">
+            <span class="number">3</span>
+            <span>Verify any command before running it.</span>
+          </div>
+        </div>
+
+        <div class="token-box">
+          <code class="token">DEMO-TOKEN-REPLACE-ME</code>
+          <button class="copy">Copy token</button>
+        </div>
+
+        <p class="note">
+          Demo interface. Never paste unknown commands into
+          PowerShell or Command Prompt.
+        </p>
+
+        <div class="mobile-label">ALTERNATIVE VERSION</div>
+      </section>
+    </div>
   </main>
+
+  <footer>
+    Ultimate MM2 Tweak &copy; 2026
+  </footer>
+
   <script>
-    const button = document.getElementById('copyButton');
-    const token = document.getElementById('token').textContent;
-    const status = document.getElementById('status');
-    button.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(token);
-        status.textContent = 'Demo token copied.';
-      } catch {
-        status.textContent = 'Copy is unavailable in this browser. Select the token and copy it manually.';
-      }
+    document.querySelectorAll(".copy").forEach(button => {
+      button.addEventListener("click", async () => {
+        const token = button.parentElement
+          .querySelector(".token").textContent.trim();
+
+        try {
+          await navigator.clipboard.writeText(token);
+          button.textContent = "Copied!";
+          setTimeout(() => button.textContent = "Copy token", 1600);
+        } catch {
+          button.textContent = "Copy unavailable";
+        }
+      });
     });
   </script>
 </body>
